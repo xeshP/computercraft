@@ -1,0 +1,53 @@
+params = {...}
+if not params[1] then
+    print("drop | Slot (u|d)")
+    else if params[1] == "all" then
+        if not params[2] then
+            for sloto = 1, 16 do
+                turtle.select(sloto)
+                turtle.drop()
+                end
+            else
+                if params[2] == "u" then
+                    for sloto = 1, 16 do
+                        turtle.select(sloto)
+                        turtle.dropUp()
+                        end
+                    else if params[2] == "d" then
+                        for sloto = 1, 16 do
+                            turtle.select(sloto)
+                            turtle.dropDown()
+                            end
+                        else
+                            print("Schreib u oder d als param 2")
+                            end
+                        end
+                    end
+                    
+                        
+    else
+        if not params[2] then
+            print("single")
+            numb = tonumber (params[1])
+            turtle.select(numb)
+            turtle.drop()
+            else
+                numb = tonumber (params[1])
+                if params[2] == "u" then
+                    turtle.select(numb)
+                    turtle.dropUp()
+                    else if params[2] == "d" then
+                        turtle.select(numb)
+                        turtle.dropDown()
+                        else
+                            print("Schreib u oder d als start param")
+                            end
+                        end
+                    end
+                end
+            end
+
+ 
+
+
+

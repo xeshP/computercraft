@@ -1,0 +1,86 @@
+local ballereule = peripheral.wrap("back")
+ballereule.open(1337)
+round = 1
+found = 1
+function string.starts(String,Start)
+   return string.sub(String,1,string.len(Start))==Start
+end
+
+
+solo = function()
+    event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
+    print(message)
+    if message == "0" then
+        such()
+        else
+            event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
+            print(message)
+            event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
+            print(message)
+            such()
+            end
+        end
+
+mult = function()
+    event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
+    print(message)
+    if message == "0" then
+        such()
+        else
+            for anz = 1, message do
+                event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
+                print(message)
+                end
+                event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
+                print(message)
+                such()
+            end
+        end
+            
+ 
+    
+    
+
+    
+such = function()
+while(round < 3)
+do
+    user_input = io.read()
+    ballereule.transmit(1336, 1337, user_input)
+    if string.starts(user_input, "sinfo") then
+        if #user_input > 5 then
+            found = 1
+            solo()
+            else
+                mult()
+                end
+                
+            
+    found = 1
+    else
+        found = 5
+        event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
+        print("BallerEule ist "..(senderDistance or "an unknown number of").." Blöcke entfernt.")
+        print(message)
+        message = nil
+        end
+        
+    while(found < 3)
+    do
+        event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
+        print("BallerEule ist "..(senderDistance or "an unknown number of").." Blöcke entfernt.")
+        message = tonumber (message)
+        found = 5
+        if message == nil then
+            print(message.."nilovic")
+            event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
+            print(message)
+            else
+                print(message)
+                event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
+                print(message)
+            end
+        end
+    end
+end
+such()

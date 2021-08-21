@@ -1,0 +1,23 @@
+params = {...}
+if not params[1] then
+    print("p | Slot (u|d)")
+    else if not params[2] then
+        slot = tonumber (params[1])
+        turtle.select(slot)
+        turtle.place()
+        else
+            slot = tonumber (params[1])
+            if params[2] == "u" then
+                turtle.select(slot)
+                turtle.placeUp()
+                else if params[2] == "d" then
+                    turtle.select(slot)
+                    turtle.placeDown()
+                    else
+                        print("schreib u oder d")
+                        end
+                    end
+                end
+            end
+
+        

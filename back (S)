@@ -1,0 +1,11 @@
+round = 0
+if ... then
+    numb = tonumber (...)
+    while( numb > round ) do
+        turtle.back()
+        round = (round + 1)
+        end
+        
+    else
+        turtle.back()
+        end

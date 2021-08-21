@@ -1,0 +1,14 @@
+round = 0
+if ... then
+    numb = tonumber (...)
+    while( numb > round ) do
+        turtle.digUp()
+        turtle.up()
+        round = (round + 1)
+        end
+        
+    else
+        turtle.digUp()
+        turtle.up()
+        end
+    

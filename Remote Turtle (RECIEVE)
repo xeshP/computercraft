@@ -1,1 +1,12 @@
+modem = peripheral.wrap("right")
+modem.open(1336)
+round = 1
+while(round < 3)
+do
+event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
 
+print("Empfangen: "..message)
+print("BallerDevice ist "..(senderDistance or "an unknown number of").." Blöcke entfernt.")
+shell.run(message)
+modem.transmit(1337, 1336, "--Script Erfolgreich beendet--")
+end

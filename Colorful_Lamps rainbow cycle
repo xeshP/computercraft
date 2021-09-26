@@ -1,0 +1,76 @@
+red = 255
+green = 0
+blue = 0
+ 
+ 
+ 
+ 
+ 
+m = peripheral.wrap("back")
+ 
+local function convertRGBToInt(red, green, blue)
+  local r, g, b = math.floor(red / 8), math.floor(green / 8), math.floor(blue / 8)
+  -- We don't have to shift red because it's already its bits are already in the correct position
+  local shiftGreen = bit.blshift(g, 5)
+  local shiftRed = bit.blshift(r, 10)
+ 
+  return shiftRed + shiftGreen + b
+end
+ 
+ 
+ 
+names = m.getNamesRemote()
+sleeptime = 0.000002
+unlimited = true
+while unlimited == true do
+ 
+if red == 255 then
+    for r = 1, 255 do
+        blue = blue+1
+        for tab = 1, #names do
+            m.callRemote(names[tab], "setLampColor", convertRGBToInt(red, green, blue))
+        end
+    end
+    print(blue.."     blue info")
+    if blue == 255 then
+        for r = 1, 255 do
+            red = red-1
+            for tab = 1, #names do
+                m.callRemote(names[tab], "setLampColor", convertRGBToInt(red, green, blue))
+            end
+        end
+        print(red.."     red info")
+        if red == 0 then
+            for r = 1,255 do
+                green = green+1
+                for tab = 1, #names do
+                    m.callRemote(names[tab], "setLampColor", convertRGBToInt(red, green, blue))
+                end
+            end
+            print(green.."    green info")
+            if green == 255 then
+                for r = 1, 255 do
+                    blue = blue-1
+                    for tab = 1, #names do
+                        m.callRemote(names[tab], "setLampColor", convertRGBToInt(red, green, blue))
+                    end
+                end
+                print(blue.."    blue info")
+                if blue == 0 then
+                    for r = 1, 255 do
+                        red = red+1
+                        for tab = 1, #names do
+                            m.callRemote(names[tab], "setLampColor", convertRGBToInt(red, green, blue))
+                        end
+                    end
+                    print(red.."    red info")
+                end
+            end
+ 
+        end
+    end
+end
+ 
+ 
+ 
+end

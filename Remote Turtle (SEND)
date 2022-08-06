@@ -27,11 +27,7 @@ mult = function()
     if message == "0" then
         such()
         else
-            print("sere")
-            print(message)
-            meso = tonumber(message)
             for anz = 1, tonumber(message) do
-                print("sere222")
                 event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
                 print(message)
                 end
@@ -43,12 +39,10 @@ mult = function()
             
  
     
-    
 
     
 such = function()
-while(round < 3)
-do
+while(round < 3) do
     user_input = io.read()
     ballereule.transmit(1336, 1337, user_input)
     if string.starts(user_input, "sinfo") then
@@ -56,6 +50,7 @@ do
             found = 1
             solo()
             else
+                print("multistart")
                 mult()
                 end
                 
@@ -69,8 +64,7 @@ do
         message = nil
         end
         
-    while(found < 3)
-    do
+    while(found < 3) do
         event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
         print("BallerEule ist "..(senderDistance or "an unknown number of").." Blöcke entfernt.")
         message = tonumber (message)

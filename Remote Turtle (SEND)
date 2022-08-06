@@ -27,7 +27,7 @@ mult = function()
     if message == "0" then
         such()
         else
-            for anz = 1, message do
+            for anz = 1, tonumber(message) do
                 event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
                 print(message)
                 end

@@ -1,0 +1,137 @@
+-----BUILD
+-----ender chest then a computer on top
+-----behin ender chest place adaper, on top of adatper place relay
+-----connect speaker with computer
+speaker = peripheral.find("speaker")
+side = 3
+
+if not fs.exists("log") then
+	local file = fs.open("log", "w")
+	---file.write("!")
+	file.close()
+else	
+	local file = fs.open("log", "r")
+    logbase = file.readAll()
+	file.close()
+end
+
+
+
+checklog = function()
+    file = fs.open("log", "r")
+    logbase = file.readAll()
+    file.close()
+end
+
+
+editlog = function(filetoedit)
+    checklog()
+    file = fs.open("log", "w")
+    file.write(logbase.."\n"..filetoedit)
+    file.close()
+end
+
+
+
+
+write("[CHEST] or [TANK]")
+inpst = read()
+count = 0
+if inpst == "TANK" or inpst == "tank" then
+    tank = peripheral.find("ender_tank")
+    choice = "tank"
+    print("Sleep Timer before Scan: (number)")
+    inpun = read()
+
+    for one = 0,15 do
+        for two = 0,15 do
+            for three = 0,15 do
+                os.sleep(tonumber(inpun))
+                count = count+1
+                write("("..count.."/4096)")
+                chest.getMetadata()
+                chest = perioheral.wrap("bottom")
+                chest.getMetadata.
+                if chest.getTankLevel(side) > 0 then
+                    write(one.."!"..two.."!"..three)
+                    write("FLUID TANK FOUND!!1 $$$")
+                    write("=================")
+                    write("=skip or enter=")
+                    read()
+                end
+            end
+        end
+    end
+else
+    choice = "chest"
+    chest = peripheral.find("ender_chest")
+    write("[FLEX], [OneByOne] or [SNIPER]")
+    mode = read()
+    write("runs: (number)")
+    runs = read()
+    for one = 0,15 do
+        for two = 0,15 do
+            for three = 0,15 do
+                count = count+1
+                
+                chest.setFrequency(one,two,three)
+                print("("..count.."/4096)")
+                for i = 1,tonumber(runs) do
+                if mode == "SNIPER" or mode == "sniper" then
+                    itm = inv.getStackInSlot(side,1)
+                    if itm ~= nil then
+                        print(itm.name)
+                        write(one.."!"..two.."!"..three)
+                        write("ITEM SNIPED!!1 $$$")
+                        write("=================")
+                        write("=skip or enter=")
+                        editlog(one..","..two..","..three)
+                        inpun = read()
+                        if inpun == "skip" then
+                            break
+                        end
+                    end
+                elseif mode == "OneByOne" or mode == "onebyone" then
+                    
+                    local founditem = false
+                    for i = 1,27 do
+                        chesto = peripheral.wrap("bottom")
+                        if chesto.getItem(i) == nil then
+                            --print("not found")
+                        else
+                            if founditem == true then
+                                print("    »»»»»  "..chesto.getItem(i).getMetadata().displayName.." x ["..chesto.getItem(i).getMetadata().count.."]")
+                            else
+                                speaker.playSound("entity.creeper.primed")
+                                print("       GRACEFULLY FOUND A FREQUENCY ("..one.."/"..two.."/"..three..")")
+                                print("    »»»»»  "..chesto.getItem(i).getMetadata().displayName.." x ["..chesto.getItem(i).getMetadata().count.."]")
+                            end
+
+                            founditem = true
+                        end
+                    end
+                    if founditem == true then editlog(one..","..two..","..three);print("DONE!");speaker.playSound("entity.creeper.primed");io.read() end
+                        
+                else
+                    local founditem = false
+                    chesto = peripheral.wrap("bottom")
+                    for itm in pairs(chesto.list()) do
+                        if itm ~= nil then
+                            if founditem == true then
+                                print("    »»»»»  "..chesto.list()[itm].name.." x ["..chesto.list()[itm].count.."]")
+                            else
+                                print("       GRACEFULLY FOUND A FREQUENCY ("..one.."/"..two.."/"..three..")")
+                                print("    »»»»»  "..chesto.list()[itm].name.." x ["..chesto.list()[itm].count.."]")
+                            end
+                            founditem = true
+                        end
+                    end
+                    if founditem == true then editlog(one..","..two..","..three);print("DONE!");speaker.playSound("entity.creeper.primed");io.read() end
+                  
+
+                    end
+                end
+            end
+        end
+    end
+end

@@ -38,6 +38,7 @@ write("[CHEST] or [TANK]")
 inpst = read()
 count = 0
 if inpst == "TANK" or inpst == "tank" then
+    chest = peripheral.find("ender_tank")
     tank = peripheral.find("ender_tank")
     choice = "tank"
     print("Sleep Timer before Scan: (number)")
@@ -48,12 +49,13 @@ if inpst == "TANK" or inpst == "tank" then
             for three = 0,15 do
                 os.sleep(tonumber(inpun))
                 count = count+1
-                write("("..count.."/4096)")
-                chest.getMetadata()
-                chest = perioheral.wrap("bottom")
-                chest.getMetadata.
-                if chest.getTankLevel(side) > 0 then
+                
+                tank.setFrequency(one,two,three)
+                print("("..count.."/4096)")
+                --chest.getMetadata()
+                if chest.getTanks()[1].amount > 0 then
                     write(one.."!"..two.."!"..three)
+                    print(chest.getTanks()[1].displayName)
                     write("FLUID TANK FOUND!!1 $$$")
                     write("=================")
                     write("=skip or enter=")
